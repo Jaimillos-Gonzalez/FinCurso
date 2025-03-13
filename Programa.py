@@ -7,6 +7,7 @@ biblioteca_libros = []
 class Libro:
     
     def __init__(self, titulo: str, autor: str, isbn: str, disponible: bool):
+
         self.titulo = titulo
         self.autor = autor
         self.isbn = isbn
@@ -31,10 +32,18 @@ class Libro:
             print("Este libro ya estaba disponible")
 
     def mostrar(self):
-        print("{} ({}) - ISBN: {} - Disponible:  {}".format(self.titulo, self.autor, self.isbn, self.disponible))
+        for libro in biblioteca_libros:
+            print("{} ({}) - ISBN: {} - Disponible:  {}\n".format(libro.titulo, libro.autor, libro.isbn, libro.disponible))
     
     def buscar(self):
         pass
+
+def get_libro_por_isbn(isbn):
+    for libro in biblioteca_libros:
+        if libro.isbn == isbn:
+            return libro
+    
+    return None
 
 def gestion_inventario():
 
@@ -59,16 +68,31 @@ def gestion_inventario():
             seguir = "NO"
         # AGREGAR UN LIBRO
         elif entrada_usuario == "1":
-            pass
+            titulo = input("Título:")
+            autor = input ("Autor:")
+            isbn = input("ISBN:")
+
+            #Comprobamos que no exista ya ese libro
+            libro = get_libro_por_isbn(isbn)
+
+            if not libro is None:
+                print ("Ya existía el libro con ISDN:{} en el catálogo".format(libro.isdn))
+            else:
+            #Lo añadimos
+                libro = Libro(titulo,autor,isbn,True)
+                biblioteca_libros.append(libro)
+                print("Libro agregado con éxito.")
         # PRESTAR UN LIBRO
         elif entrada_usuario == "2":
             pass
         # DEVOLVER UN LIBRO
         elif entrada_usuario == "3":
             pass
-        # MOSTRAR UN LIBRO
+        # MOSTRAR TODOS LOS LIBROS
         elif entrada_usuario == "4":
-            pass
+            
+
+
         # BUSCAR UN LIBRO
         elif entrada_usuario == "5":
             pass
