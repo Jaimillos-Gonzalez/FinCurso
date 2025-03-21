@@ -90,7 +90,7 @@ def gestion_inventario():
             pass
         # MOSTRAR TODOS LOS LIBROS
         elif entrada_usuario == "4":
-            
+            pass
 
 
         # BUSCAR UN LIBRO
