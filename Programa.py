@@ -37,7 +37,7 @@ class Libro:
                 return str(libro)
 
     def __str__(self):
-        return f"{} ({}) - ISBN: {} - Disponible: {}".format(self.titulo, self.autor, self.isbn, "Sí" if self.disponible else "No") 
+        return "{} ({}) - ISBN: {} - Disponible: {}".format(self.titulo, self.autor, self.isbn, "Sí" if self.disponible else "No") 
     
 #Clase Libros ------------------------------------------------
 # ------------------------------------------------------------
@@ -64,10 +64,10 @@ class Biblioteca:
     def addLibro(self, titulo: str, autor: str, isbn:str):
         #Comprobamos que no exista
         if self.existsLibro(isbn):
-            return f"Ya existía el libro con ISDN:{} en el catálogo.".format(isbn)
+            return "Ya existía el libro con ISDN:{} en el catálogo.".format(isbn)
         else:
             biblioteca_libros.append(Libro(titulo,autor,isbn))
-            return f"Libro agregado con éxito."
+            return "Libro agregado con éxito."
         
     def prestarLibro(self, isbn: str):
         libro = self.getLibro(isbn)
@@ -75,11 +75,11 @@ class Biblioteca:
         if libro is not None:
             if libro.disponible:
                 libro.prestar()
-                return f"Libro prestado con éxito."
+                return "Libro prestado con éxito."
             else:
-                return f"Este libro se encuentra actualmente prestado."
+                return "Este libro se encuentra actualmente prestado."
         else:
-            return f"El libro de ISBN:{} no esiste.".format(isbn)
+            return "El libro de ISBN:{} no esiste.".format(isbn)
         
     def devolverLibro(self, isbn: str):
         libro = self.getLibro(isbn)
@@ -87,11 +87,11 @@ class Biblioteca:
         if libro is not None:
             if not libro.disponible:
                 libro.devolver()
-                return f"Libro devuelto con éxito."
+                return "Libro devuelto con éxito."
             else:
-                return f"Este libro no estaba prestado anteriormente."
+                return "Este libro no estaba prestado anteriormente."
         else:
-            return f"El libro de ISBN:{} no esiste.".format(isbn)
+            return "El libro de ISBN:{} no esiste.".format(isbn)
         
     def mostrarLibros(self):
         lista_libros = ""
@@ -148,7 +148,7 @@ def gestion_inventario():
         elif entrada_usuario == "3":
             isbn = input("Introduce el ISBN del libro: ")
 
-            print(biblioteca.prestarLibro(isbn))
+            print(biblioteca.devolverLibro(isbn))
         # MOSTRAR TODOS LOS LIBROS
         elif entrada_usuario == "4":
             listado_libros =  biblioteca.mostrarLibros()
