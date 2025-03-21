@@ -106,7 +106,7 @@ class Biblioteca:
 def cobertura():
     libro_palo = Libro('','','')
     libro_palo.buscar('')
-    libro_palo.mostrar('')
+    libro_palo.mostrar()
 
 def gestion_inventario():
 
@@ -170,6 +170,6 @@ def gestion_inventario():
             print(f"Opción introducida incorrecta; los valores válidos son 1,2,3,4,5 y 6 para Salir")
 
 #Acciones de palo para cubrir tod la cobertura de código
-
+cobertura()
 
 gestion_inventario()
